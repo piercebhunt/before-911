@@ -159,7 +159,7 @@ export default function App() {
             </div>
           )}
           <p className="feedback__fineprint">
-            Anonymous. In the live pilot this would feed a simple evaluation form.
+            Anonymous. Demo only — in a live pilot, responses would flow to the pilot's operating organization.
           </p>
         </section>
 
@@ -171,9 +171,11 @@ export default function App() {
         </section>
 
         <footer className="footer">
-          Prototype for policy discussion — not an official government site or emergency service.
-          For immediate danger, call 911. Resource listings are drafts and must be verified with
-          each provider before public use. Open source:{" "}
+         Prototype for policy discussion — not an official government site or emergency service.
+         For immediate danger, call 911. This page uses no cookies and collects no personal
+         information — anonymous, aggregate counts only (page visits and button choices) are
+         used to evaluate the pilot. Resource listings are drafts and must be verified with
+         each provider before public use. Open source:{" "}
           <a href={county.repoUrl} target="_blank" rel="noopener noreferrer">
             {county.repoUrl.replace("https://", "")}
           </a>
