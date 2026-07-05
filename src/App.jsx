@@ -107,7 +107,7 @@ export default function App() {
             variant="guide"
             eyebrow="Not sure — start here"
             situation="Something's wrong, but it's not an emergency"
-            detail="Someone needs help with housing, food, a family situation, or a struggle you can't name — and calling the police doesn't feel like the right fit."
+            detail="Housing, food, counseling, financial help, and connection to 3,000+ local services — for situations where police aren't the right fit."
             actions={[
               { label: "Call 211", href: "tel:211", solid: true },
               ...(county.browse211Url
