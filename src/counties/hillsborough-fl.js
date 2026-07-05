@@ -63,5 +63,5 @@ export const county = {
     "Proposed pilot measurements: QR scan counts by placement location (campaign-tagged URLs, e.g. ?src=library-flyer), click-through rates on the 911, 988, 211, and mobile-crisis pathways, anonymous usefulness feedback, and time-of-day patterns. The goal is a low-cost evidence base for whether bystander-facing triage shifts non-emergency contacts away from 911 toward existing behavioral health infrastructure.",
 
   // Repo link shown in the footer — update after you fork.
-  repoUrl: "https://github.com/YOUR-USERNAME/before-911",
+  repoUrl: "https://github.com/piercebhunt/before-911",
 };
