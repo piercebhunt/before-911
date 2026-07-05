@@ -1,0 +1,367 @@
+/* Before 911 — civic design system
+   Paper #F7F8F5 · Ink #182430 · Emergency #A33A31 · Lifeline #1F6786 · Guide #2E6B4F */
+
+:root {
+  --paper: #f7f8f5;
+  --card: #ffffff;
+  --ink: #182430;
+  --sub: #54636d;
+  --line: #dde3e0;
+  --emergency: #a33a31;
+  --emergency-bg: #faf1ef;
+  --lifeline: #1f6786;
+  --lifeline-bg: #eff5f8;
+  --guide: #2e6b4f;
+  --guide-bg: #eff5f1;
+  --notice-bg: #fbf6ec;
+  --notice-line: #e4d9bd;
+  --font-body: "Public Sans", -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Source Serif 4", Georgia, "Times New Roman", serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--lifeline);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
+
+.page {
+  min-height: 100vh;
+}
+
+.proto-banner {
+  background: var(--ink);
+  color: #e8edea;
+  text-align: center;
+  font-size: 13px;
+  padding: 8px 16px;
+  letter-spacing: 0.02em;
+}
+
+.container {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 28px 18px 40px;
+}
+
+/* Header */
+.header {
+  margin-bottom: 22px;
+}
+
+.header__eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--sub);
+  margin-bottom: 8px;
+}
+
+.header__title {
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 700;
+  margin: 0 0 8px;
+  line-height: 1.1;
+}
+
+.header__subtitle {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--sub);
+}
+
+/* Safety notice */
+.safety-notice {
+  background: var(--notice-bg);
+  border: 1px solid var(--notice-line);
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 14.5px;
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+/* Pathway cards */
+.pathways {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.pathway {
+  border-radius: 12px;
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px solid transparent;
+  border-left-width: 6px;
+  border-left-style: solid;
+}
+
+.pathway--primary {
+  padding: 26px 22px;
+}
+
+.pathway--emergency {
+  background: var(--emergency-bg);
+  border-color: color-mix(in srgb, var(--emergency) 15%, transparent);
+  border-left-color: var(--emergency);
+}
+
+.pathway--lifeline {
+  background: var(--lifeline-bg);
+  border-color: color-mix(in srgb, var(--lifeline) 15%, transparent);
+  border-left-color: var(--lifeline);
+}
+
+.pathway--guide {
+  background: var(--guide-bg);
+  border-color: color-mix(in srgb, var(--guide) 15%, transparent);
+  border-left-color: var(--guide);
+}
+
+.pathway__eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.pathway--emergency .pathway__eyebrow { color: var(--emergency); }
+.pathway--lifeline .pathway__eyebrow { color: var(--lifeline); }
+.pathway--guide .pathway__eyebrow { color: var(--guide); }
+
+.pathway__situation {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.25;
+}
+
+.pathway--primary .pathway__situation {
+  font-size: 26px;
+}
+
+.pathway__detail {
+  margin: 0;
+  font-size: 15.5px;
+  line-height: 1.55;
+  color: var(--sub);
+}
+
+.pathway__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.pathway__note {
+  margin: 6px 0 0;
+  font-size: 13.5px;
+  color: var(--sub);
+  line-height: 1.5;
+}
+
+/* Buttons — minimum 44px tap targets */
+.btn {
+  flex: 1 1 160px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 10px;
+  padding: 13px 20px;
+  font-size: 16px;
+  font-weight: 700;
+  border: 2px solid currentColor;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: filter 120ms ease;
+}
+
+.btn:hover {
+  filter: brightness(1.08);
+}
+
+.pathway--emergency .btn { color: var(--emergency); }
+.pathway--lifeline .btn { color: var(--lifeline); }
+.pathway--guide .btn { color: var(--guide); }
+
+.btn--solid {
+  color: #fff !important;
+}
+
+.pathway--emergency .btn--solid { background: var(--emergency); border-color: var(--emergency); }
+.pathway--lifeline .btn--solid { background: var(--lifeline); border-color: var(--lifeline); }
+.pathway--guide .btn--solid { background: var(--guide); border-color: var(--guide); }
+
+/* Sections */
+.section-title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0 0 4px;
+}
+
+.section-title--small {
+  font-size: 20px;
+  margin-bottom: 6px;
+}
+
+.section-caption {
+  margin: 0 0 14px;
+  font-size: 14px;
+  color: var(--sub);
+}
+
+/* Resources */
+.resources {
+  margin-top: 32px;
+}
+
+.resources__list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.resource {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+
+.resource__name {
+  font-weight: 700;
+  font-size: 15.5px;
+  margin-bottom: 3px;
+}
+
+.resource__desc {
+  font-size: 14px;
+  color: var(--sub);
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+
+.resource__action {
+  color: var(--guide);
+  font-weight: 700;
+  font-size: 14.5px;
+  text-decoration: none;
+}
+
+/* Feedback */
+.feedback {
+  margin-top: 32px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 18px 18px 20px;
+}
+
+.feedback__options {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.feedback__btn {
+  flex: 1 1 90px;
+  padding: 12px 16px;
+  font-size: 15.5px;
+  font-weight: 700;
+  font-family: var(--font-body);
+  background: var(--paper);
+  color: var(--ink);
+  border: 2px solid var(--line);
+  border-radius: 10px;
+  cursor: pointer;
+  min-height: 44px;
+}
+
+.feedback__btn:hover {
+  border-color: var(--guide);
+}
+
+.feedback__thanks {
+  margin: 0;
+  font-size: 15px;
+  color: var(--guide);
+  font-weight: 600;
+}
+
+.feedback__fineprint {
+  margin: 10px 0 0;
+  font-size: 12.5px;
+  color: var(--sub);
+}
+
+/* Evaluators */
+.evaluators {
+  margin-top: 24px;
+}
+
+.evaluators__toggle {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--sub);
+  letter-spacing: 0.04em;
+}
+
+.evaluators__body {
+  margin-top: 10px;
+  background: var(--card);
+  border: 1px dashed var(--line);
+  border-radius: 10px;
+  padding: 14px 16px;
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--sub);
+}
+
+/* Footer */
+.footer {
+  margin-top: 36px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  font-size: 12.5px;
+  color: var(--sub);
+  line-height: 1.6;
+}
+
+.footer a {
+  color: var(--sub);
+  font-weight: 700;
+}
