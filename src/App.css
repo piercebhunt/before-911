@@ -78,7 +78,7 @@ button:focus-visible {
 
 .header__title {
   font-family: var(--font-display);
-  font-size: 40px;
+  font-size: 44px;
   font-weight: 700;
   margin: 0 0 8px;
   line-height: 1.1;
@@ -106,7 +106,7 @@ button:focus-visible {
 .pathways {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
 }
 
 .pathway {
@@ -143,9 +143,9 @@ button:focus-visible {
 }
 
 .pathway__eyebrow {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 700;
-  letter-spacing: 0.09em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
@@ -155,14 +155,14 @@ button:focus-visible {
 
 .pathway__situation {
   font-family: var(--font-display);
-  font-size: 22px;
+  font-size: 26.5px;
   font-weight: 600;
   margin: 0;
   line-height: 1.25;
 }
 
 .pathway--primary .pathway__situation {
-  font-size: 26px;
+  font-size: 31px;
 }
 
 .pathway__detail {
@@ -192,8 +192,8 @@ button:focus-visible {
   text-align: center;
   text-decoration: none;
   border-radius: 10px;
-  padding: 13px 20px;
-  font-size: 16px;
+  padding: 15px 23px;
+  font-size: 18.5px;
   font-weight: 700;
   border: 2px solid currentColor;
   min-height: 44px;

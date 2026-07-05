@@ -87,7 +87,7 @@ export default function App() {
             variant="emergency"
             eyebrow="Emergency"
             situation="Someone is in danger right now"
-            detail="A life-threatening situation, serious injury, violence in progress, or a medical emergency."
+            detail="Violence in progress · Serious injury · Medical emergency · Threat to life"
             actions={[{ label: "Call 911", href: "tel:911", solid: true }]}
           />
 
@@ -95,7 +95,7 @@ export default function App() {
             variant="lifeline"
             eyebrow="Mental health crisis"
             situation="Someone is struggling emotionally"
-            detail="Thoughts of suicide, a mental health or substance use crisis, or overwhelming emotional distress. Trained counselors answer 24/7."
+            detail="Suicidal thoughts · Mental health or substance use crisis · Severe emotional distress — counselors answer 24/7"
             actions={[
               { label: "Call 988", href: "tel:988", solid: true },
               { label: "Text 988", href: "sms:988" },
@@ -107,7 +107,7 @@ export default function App() {
             variant="guide"
             eyebrow="Not sure — start here"
             situation="Something's wrong, but it's not an emergency"
-            detail="Housing, food, counseling, financial help, and connection to 3,000+ local services — for situations where police aren't the right fit."
+            detail="Housing · Food · Counseling · Financial help · 3,000+ local services — when police aren't the right fit"
             actions={[
               { label: "Call 211", href: "tel:211", solid: true },
               ...(county.browse211Url
