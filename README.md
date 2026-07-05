@@ -65,6 +65,8 @@ Suggested pilot metrics:
 - Anonymous usefulness feedback
 - Time-of-day patterns
 
+**QR generation:** create a distinct QR code for every physical placement, each encoding the live URL with its own `?src=` tag (e.g. `?src=hart-bus`, `?src=library-main`, `?src=memo`). This makes placement-level comparison possible with zero extra infrastructure — the page already reads the tag. Use high error correction (level H) so codes survive small print sizes and wear.
+
 ## Design principles
 
 - **Route by situation, not service name.** Plain-language cards ("Someone is in danger right now") instead of acronyms.
