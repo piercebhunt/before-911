@@ -5,9 +5,16 @@ import "./App.css";
 // fill in your local resources, and change this import.
 import { county } from "./counties/hillsborough-fl.js";
 
-/** Campaign tag from the QR code URL, e.g. ?src=library-flyer */
+/**
+ * Placement tag for pilot measurement. Two supported forms:
+ *   1. Path-based per-location short URL (printed on signs): before911.org/hart12
+ *   2. Query tag (QR codes / flyers): ?src=library-flyer
+ * Path takes precedence, so each physical sign can carry its own scan-free URL.
+ */
 function getSrcTag() {
   try {
+    const path = window.location.pathname.replace(/^\/+|\/+$/g, "");
+    if (path) return path.toLowerCase();
     return new URLSearchParams(window.location.search).get("src") || "untagged";
   } catch {
     return "untagged";
@@ -55,6 +62,8 @@ function PathwayCard({ variant, eyebrow, situation, detail, actions, note, prima
 export default function App() {
   const [feedback, setFeedback] = useState(null);
   const [evalOpen, setEvalOpen] = useState(false);
+  const [expectOpen, setExpectOpen] = useState(false);
+  const [signOpen, setSignOpen] = useState(false);
 
   const giveFeedback = (answer) => {
     setFeedback(answer);
@@ -100,6 +109,7 @@ export default function App() {
               { label: "Call 988", href: "tel:988", solid: true },
               { label: "Text 988", href: "sms:988" },
             ]}
+            note="Calling for someone else? If it's safe, ask the person if they want help before calling for them."
           />
 
           <PathwayCard
@@ -117,6 +127,37 @@ export default function App() {
             note={county.local211Note}
           />
         </div>
+
+        <div className="no-call-notice" role="note">
+          <strong>Not every situation needs a call.</strong> If no one is in danger, keeping
+          your distance and staying calm is also a valid response. Visible distress alone is
+          not an emergency.
+        </div>
+
+        <section className="evaluators">
+          <button
+            className="evaluators__toggle"
+            onClick={() => {
+              setExpectOpen(!expectOpen);
+              if (!expectOpen) track("expect_988_open");
+            }}
+          >
+            {expectOpen ? "▾" : "▸"} What happens when you call 988?
+          </button>
+          {expectOpen && (
+            <div className="evaluators__body">
+              A trained crisis counselor answers — by call, text, or chat, 24/7. You don't
+              have to give your name or any personal information, and the call is free. The
+              counselor will listen, help de-escalate, and connect you or the person you're
+              worried about to local support. The vast majority of 988 contacts are resolved
+              in conversation. Nationally, fewer than 2% involve emergency services, and more
+              than half of those dispatches happen with the caller's consent — but if a
+              counselor believes someone's life is in immediate danger, they can initiate an
+              emergency response. 988 changes who answers first; it is not a guarantee about
+              who can never be involved.
+            </div>
+          )}
+        </section>
 
         <section className="resources">
           <h2 className="section-title">
@@ -161,6 +202,41 @@ export default function App() {
           <p className="feedback__fineprint">
             Anonymous. Demo only — in a live pilot, responses would flow to the pilot's operating organization.
           </p>
+        </section>
+
+        <section className="evaluators">
+          <button
+            className="evaluators__toggle"
+            onClick={() => {
+              setSignOpen(!signOpen);
+              if (!signOpen) track("sign_mockup_open");
+            }}
+          >
+            {signOpen ? "▾" : "▸"} Draft sign language (v4.2 — Layout 1)
+          </button>
+          {signOpen && (
+            <div className="evaluators__body">
+              <div className="sign-mockup" aria-label="Draft physical sign mockup">
+                <p className="sign-mockup__header">Need help — or worried about someone nearby?</p>
+                <p><strong>Call 911 — Immediate danger or medical emergency</strong><br />
+                Someone is hurt, unconscious, threatening violence, or in physical danger</p>
+                <p><strong>Call or text 988 — Emotional crisis or suicide</strong><br />
+                Someone is talking about suicide, panicking, crying, or in serious distress —
+                but no one is hurt or in danger. <em>If it's safe, ask the person if they want
+                help before calling for them.</em></p>
+                <p><strong>Call 211 — Help with shelter, food, or local services</strong><br />
+                Someone seems to need practical help — a place to sleep, food, or connection
+                to care — but is not in crisis right now</p>
+                <p><strong>Not every situation needs a call.</strong> If no one is in danger,
+                keeping your distance and staying calm is also a valid response.</p>
+                <p className="sign-mockup__footer">Not sure? &nbsp;before911.org &nbsp;·&nbsp; Sign #__ — [Location]</p>
+              </div>
+              <p className="sign-mockup__caption">
+                Draft language from concept memo v4.2 — under review with local crisis
+                practitioners; not final and not deployed.
+              </p>
+            </div>
+          )}
         </section>
 
         <section className="evaluators">
